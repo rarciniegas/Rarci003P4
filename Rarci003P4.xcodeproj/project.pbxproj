@@ -14,6 +14,8 @@
 		8E2DEA1E1BC59E2D00055E56 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E2DEA1D1BC59E2D00055E56 /* Images.xcassets */; };
 		8E2DEA211BC59E2D00055E56 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E2DEA1F1BC59E2D00055E56 /* LaunchScreen.xib */; };
 		8E2DEA2D1BC59E2E00055E56 /* Rarci003P4Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2DEA2C1BC59E2E00055E56 /* Rarci003P4Tests.m */; };
+		8E2DEA381BC59EF500055E56 /* AddressCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2DEA371BC59EF500055E56 /* AddressCard.m */; };
+		8E2DEA3A1BC59F4600055E56 /* AddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2DEA391BC59F4600055E56 /* AddressBook.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,10 @@
 		8E2DEA261BC59E2D00055E56 /* Rarci003P4Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Rarci003P4Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E2DEA2B1BC59E2D00055E56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E2DEA2C1BC59E2E00055E56 /* Rarci003P4Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Rarci003P4Tests.m; sourceTree = "<group>"; };
+		8E2DEA361BC59E8D00055E56 /* AddressBook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressBook.h; sourceTree = "<group>"; };
+		8E2DEA371BC59EF500055E56 /* AddressCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressCard.m; sourceTree = "<group>"; };
+		8E2DEA391BC59F4600055E56 /* AddressBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBook.m; sourceTree = "<group>"; };
+		8E2DEA3B1BC59F8D00055E56 /* AddressCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressCard.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,10 @@
 				8E2DEA1D1BC59E2D00055E56 /* Images.xcassets */,
 				8E2DEA1F1BC59E2D00055E56 /* LaunchScreen.xib */,
 				8E2DEA101BC59E2D00055E56 /* Supporting Files */,
+				8E2DEA361BC59E8D00055E56 /* AddressBook.h */,
+				8E2DEA371BC59EF500055E56 /* AddressCard.m */,
+				8E2DEA391BC59F4600055E56 /* AddressBook.m */,
+				8E2DEA3B1BC59F8D00055E56 /* AddressCard.h */,
 			);
 			path = Rarci003P4;
 			sourceTree = "<group>";
@@ -219,7 +229,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E2DEA381BC59EF500055E56 /* AddressCard.m in Sources */,
 				8E2DEA191BC59E2D00055E56 /* ViewController.m in Sources */,
+				8E2DEA3A1BC59F4600055E56 /* AddressBook.m in Sources */,
 				8E2DEA161BC59E2D00055E56 /* AppDelegate.m in Sources */,
 				8E2DEA131BC59E2D00055E56 /* main.m in Sources */,
 			);
