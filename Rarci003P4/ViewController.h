@@ -26,6 +26,7 @@
 - (IBAction)updateButton:(id)sender;
 - (IBAction)prevButton:(id)sender;
 - (IBAction)nextButton:(id)sender;
+- (IBAction)deleteButton:(id)sender;
 
 @end
 

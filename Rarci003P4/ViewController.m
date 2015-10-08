@@ -81,9 +81,13 @@
 - (IBAction)prevButton:(id)sender {
     AddressCard * myCard = [[AddressCard alloc] init];
     myCard = [myBook lookup:nameText.text];
+
     NSUInteger index = [myBook.book indexOfObject:myCard];
-    if (index < 1)
-        index = [myBook entries] - 1;
+    if ((index > [myBook entries] ) || (index < 1))
+        index = [myBook entries];
+
+//    if (index < 1)
+  //      index = [myBook entries];
     index--;
     myCard = [myBook.book objectAtIndex:index];
     
@@ -102,5 +106,17 @@
  
     nameText.text = [myCard name];
     emailText.text = [myCard email];
+}
+
+- (IBAction)deleteButton:(id)sender {
+    AddressCard * myCard = [[AddressCard alloc] init];
+    
+    // set up address card
+    [myCard setName: nameText.text andEmail: emailText.text];
+    
+    // Add card to the address book
+    [myBook removeCard:myCard];
+    [myBook sort2];
+    [myBook list];
 }
 @end

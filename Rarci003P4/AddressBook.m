@@ -64,7 +64,7 @@
 
 -(void) list
 {
-    NSLog (@"======= Contents of: %@ ========", bookName);
+    NSLog (@"====== Contents of: %@ =======", bookName);
     for ( AddressCard *theCard in book )
         NSLog (@"%-20s %-32s", [theCard.name UTF8String],
                [theCard.email UTF8String]);
