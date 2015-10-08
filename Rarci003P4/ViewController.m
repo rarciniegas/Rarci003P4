@@ -39,14 +39,10 @@
     AddressCard * card2 = [[AddressCard alloc] init];
     AddressCard * card3 = [[AddressCard alloc] init];
 
-    
-    
     // First set up three address cards
     [card1 setName: aName andEmail: aEmail];
     [card2 setName: bName andEmail: bEmail];
     [card3 setName: cName andEmail: cEmail];
-
-    
   
     // Add some cards to the address book
     [myBook addCard: card1];
@@ -72,12 +68,9 @@
 
 - (IBAction)updateButton:(id)sender {
     AddressCard * myCard = [[AddressCard alloc] init];
-    //AddressBook * myBook = [AddressBook alloc];
-    
     
     // set up address card
     [myCard setName: nameText.text andEmail: emailText.text];
-    //myBook = [myBook initWithName: @"Roberto’s Address book"];
     
     // Add card to the address book
     [myBook addCard: myCard];
@@ -86,8 +79,28 @@
 }
 
 - (IBAction)prevButton:(id)sender {
+    AddressCard * myCard = [[AddressCard alloc] init];
+    myCard = [myBook lookup:nameText.text];
+    NSUInteger index = [myBook.book indexOfObject:myCard];
+    if (index < 1)
+        index = [myBook entries] - 1;
+    index--;
+    myCard = [myBook.book objectAtIndex:index];
+    
+    nameText.text = [myCard name];
+    emailText.text = [myCard email];
 }
 
 - (IBAction)nextButton:(id)sender {
+    AddressCard * myCard = [[AddressCard alloc] init];
+    myCard = [myBook lookup:nameText.text];
+    NSUInteger index = [myBook.book indexOfObject:myCard] + 1;
+    if (index > [myBook entries] - 1 ) {
+        index = 0;
+    }
+    myCard = [myBook.book objectAtIndex:index];
+ 
+    nameText.text = [myCard name];
+    emailText.text = [myCard email];
 }
 @end
