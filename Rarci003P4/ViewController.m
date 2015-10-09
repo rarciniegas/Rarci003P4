@@ -19,7 +19,7 @@
 @end
 
 @implementation ViewController
-@synthesize nameText, emailText, myBook;
+@synthesize nameText, emailText, myBook, myCard;
 
 
 - (void)viewDidLoad {
@@ -38,6 +38,7 @@
     AddressCard * card1 = [[AddressCard alloc] init];
     AddressCard * card2 = [[AddressCard alloc] init];
     AddressCard * card3 = [[AddressCard alloc] init];
+    myCard = [[AddressCard alloc] init];
 
     // First set up three address cards
     [card1 setName: aName andEmail: aEmail];
@@ -67,55 +68,58 @@
 }
 
 - (IBAction)updateButton:(id)sender {
-    AddressCard * myCard = [[AddressCard alloc] init];
+    if (![nameText.text isEqualToString:@""]) {
+
+        // set up address card
+        [myCard setName: nameText.text andEmail: emailText.text];
     
-    // set up address card
-    [myCard setName: nameText.text andEmail: emailText.text];
-    
-    // Add card to the address book
-    [myBook addCard: myCard];
-    [myBook sort2];
-    [myBook list];
+        // Add card to the address book
+        if ([myBook lookup:nameText.text ]== nil)
+            [myBook addCard: myCard];
+        [myBook sort];
+        [myBook list];
+    }
 }
 
 - (IBAction)prevButton:(id)sender {
-    AddressCard * myCard = [[AddressCard alloc] init];
-    myCard = [myBook lookup:nameText.text];
+    if ([myBook entries] > 0){
+        myCard = [myBook lookup:nameText.text];
 
-    NSUInteger index = [myBook.book indexOfObject:myCard];
-    if ((index > [myBook entries] ) || (index < 1))
-        index = [myBook entries];
+        NSUInteger index = [myBook.book indexOfObject:myCard];
+        if ((index > [myBook entries] ) || (index < 1))
+            index = [myBook entries];
 
-//    if (index < 1)
-  //      index = [myBook entries];
-    index--;
-    myCard = [myBook.book objectAtIndex:index];
-    
-    nameText.text = [myCard name];
-    emailText.text = [myCard email];
+        index--;
+        myCard = [myBook.book objectAtIndex:index];
+        
+        nameText.text = [myCard name];
+        emailText.text = [myCard email];
+    }
 }
 
 - (IBAction)nextButton:(id)sender {
-    AddressCard * myCard = [[AddressCard alloc] init];
-    myCard = [myBook lookup:nameText.text];
-    NSUInteger index = [myBook.book indexOfObject:myCard] + 1;
-    if (index > [myBook entries] - 1 ) {
-        index = 0;
-    }
-    myCard = [myBook.book objectAtIndex:index];
+    if ([myBook entries] > 0){
+        myCard = [myBook lookup:nameText.text];
+        NSUInteger index = [myBook.book indexOfObject:myCard] + 1;
+        if (index > [myBook entries] - 1 ) {
+            index = 0;
+        }
+        myCard = [myBook.book objectAtIndex:index];
  
-    nameText.text = [myCard name];
-    emailText.text = [myCard email];
+        nameText.text = [myCard name];
+        emailText.text = [myCard email];
+    }
 }
 
 - (IBAction)deleteButton:(id)sender {
-    AddressCard * myCard = [[AddressCard alloc] init];
     
     // set up address card
     [myCard setName: nameText.text andEmail: emailText.text];
     
     // Add card to the address book
     [myBook removeCard:myCard];
+    nameText.text = @"";
+    emailText.text = @"";
     [myBook sort2];
     [myBook list];
 }

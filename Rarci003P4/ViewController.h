@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *nameText;
 @property (weak, nonatomic) IBOutlet UITextField *emailText;
 @property (strong, nonatomic) AddressBook *myBook;
+@property (strong, nonatomic) AddressCard *myCard;
 
 - (IBAction)newButton:(id)sender;
 - (IBAction)updateButton:(id)sender;
