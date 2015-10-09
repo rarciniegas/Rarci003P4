@@ -71,13 +71,22 @@
     NSLog (@"==================================================");
     
 }
-
 // lookup address card by name — assumes an exact match
 
--(AddressCard *) lookup: (NSString *) theName
+-(AddressCard *) findName: (NSString *) theName
 {
     for ( AddressCard *nextCard in book )
         if ( [[nextCard name] caseInsensitiveCompare: theName] == NSOrderedSame )
+            return nextCard;
+    return nil;
+}
+
+// lookup address card by email — assumes an exact match
+
+-(AddressCard *) findEmail: (NSString *) theEmail
+{
+    for ( AddressCard *nextCard in book )
+        if ( [[nextCard email] caseInsensitiveCompare: theEmail] == NSOrderedSame )
             return nextCard;
     return nil;
 }

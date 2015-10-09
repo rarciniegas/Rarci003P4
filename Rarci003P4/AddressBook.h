@@ -20,6 +20,7 @@
 -(void) addCard: (AddressCard *) theCard;
 -(void) removeCard: (AddressCard *) theCard; -(NSUInteger) entries;
 -(void) list;
--(AddressCard *) lookup: (NSString *) theName;
+-(AddressCard *) findName: (NSString *) theName;
+-(AddressCard *) findEmail: (NSString *) theEmail;
 
 @end

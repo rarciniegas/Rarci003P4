@@ -69,13 +69,26 @@
 
 - (IBAction)updateButton:(id)sender {
     if (![nameText.text isEqualToString:@""]) {
-
         // set up address card
-        [myCard setName: nameText.text andEmail: emailText.text];
-    
-        // Add card to the address book
-        if ([myBook lookup:nameText.text ]== nil)
-            [myBook addCard: myCard];
+        myCard = [[AddressCard alloc] init];
+        myCard = [myBook findName:nameText.text];
+
+        if ([myBook.book containsObject:myCard])   {
+            [myCard setName: nameText.text andEmail: emailText.text];
+        }
+        myCard = [myBook findEmail:emailText.text];
+        
+        if ([myBook.book containsObject:myCard])   {
+            [myCard setName: nameText.text andEmail: emailText.text];
+        }
+        else   {
+            AddressCard * newCard = [[AddressCard alloc] init];
+
+            [newCard setName: nameText.text andEmail: emailText.text];
+
+            [myBook addCard: newCard];
+        }
+
         [myBook sort];
         [myBook list];
     }
@@ -83,7 +96,7 @@
 
 - (IBAction)prevButton:(id)sender {
     if ([myBook entries] > 0){
-        myCard = [myBook lookup:nameText.text];
+        myCard = [myBook findName:nameText.text];
 
         NSUInteger index = [myBook.book indexOfObject:myCard];
         if ((index > [myBook entries] ) || (index < 1))
@@ -99,7 +112,7 @@
 
 - (IBAction)nextButton:(id)sender {
     if ([myBook entries] > 0){
-        myCard = [myBook lookup:nameText.text];
+        myCard = [myBook findName:nameText.text];
         NSUInteger index = [myBook.book indexOfObject:myCard] + 1;
         if (index > [myBook entries] - 1 ) {
             index = 0;
